@@ -6,6 +6,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import org.apache.logging.log4j.Level;
 import org.lwjgl.input.Keyboard;
 
 import java.io.IOException;
@@ -52,7 +53,7 @@ public class RegexContainerGUI extends GuiContainer {
                             try {
                                 if (Pattern.compile(te.exp).matcher(i).find()) flag.set(true);
                             } catch(Exception ignored) {
-                                System.out.println("Error");
+                                RegexFilters.logger.log(Level.ERROR, "Pattern invalid");
                                 te.exp = RegexFilters.DUMMY_STRING;
                             }
                         });
@@ -181,14 +182,28 @@ public class RegexContainerGUI extends GuiContainer {
 
     @Override
     protected void renderToolTip(ItemStack stack, int x, int y) {
+
+        AtomicBoolean flag = new AtomicBoolean(false);
+        RegexTileEntity.getNames(stack).forEach((i) -> {
+            try {
+                if (Pattern.compile(te.exp).matcher(i).find()) flag.set(true);
+            } catch(Exception ignored) {
+                RegexFilters.logger.log(Level.ERROR, "Pattern invalid");
+                te.exp = RegexFilters.DUMMY_STRING;
+            }
+        });
+
+
         FontRenderer font = stack.getItem().getFontRenderer(stack);
         net.minecraftforge.fml.client.config.GuiUtils.preItemToolTip(stack);
         List<String> tip = this.getItemToolTip(stack);
+        tip.set(0, tip.get(0).concat(" - "+ (flag.get() ? "Valid" : "Invalid")));
         tip.add("");
         tip.add("Item's searchable names:");
         tip.addAll(RegexTileEntity.getNames(stack));
         this.drawHoveringText(tip, x, y, (font == null ? fontRenderer : font));
         net.minecraftforge.fml.client.config.GuiUtils.postItemToolTip();
+
     }
 
 }

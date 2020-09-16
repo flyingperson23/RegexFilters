@@ -17,7 +17,7 @@ public class RegexFilters
 {
     public static final String MODID = "regexfilters";
     public static final String NAME = "Regex Filters";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "1.1";
 
     public static final String DUMMY_STRING = "DUMMY_!@#$%^&*()&ydvjr4OHEb6oKCuFJp1AD9xBCsInI7umBM60njy8Wq8tjhWsnb5ebeP0ljrM1p3Wk0mqtQ6Vhg0FyxE7GXZiwGtk4WivBoUGNpj2";
 

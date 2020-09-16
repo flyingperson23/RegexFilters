@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "regexfilters:regexfilter"
+  },
+  "pattern": [
+    "ihi",
+    "cbc",
+    "ihi"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+	"h": {
+      "item": "minecraft:hopper"
+    },
+    "c": {
+      "type": "forge:ore_dict",
+      "ore": "chest"
+    },
+	"b": {
+      "item": "minecraft:book"
+    }
+  }
+}
