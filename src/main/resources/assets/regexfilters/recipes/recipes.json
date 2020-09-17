@@ -3,18 +3,15 @@
     "item": "regexfilters:regexfilter"
   },
   "pattern": [
-    "ihi",
+    "ibi",
     "cbc",
-    "ihi"
+    "ibi"
   ],
   "type": "forge:ore_shaped",
   "key": {
     "i": {
       "type": "forge:ore_dict",
       "ore": "ingotIron"
-    },
-	"h": {
-      "item": "minecraft:hopper"
     },
     "c": {
       "type": "forge:ore_dict",

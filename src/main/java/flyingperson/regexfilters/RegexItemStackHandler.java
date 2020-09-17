@@ -2,7 +2,6 @@ package flyingperson.regexfilters;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
 import java.util.regex.Pattern;
@@ -25,8 +24,6 @@ public class RegexItemStackHandler extends ItemStackHandler {
     protected void onContentsChanged(int slot) {
         te.markDirty();
     }
-
-
 
     @Override
     public void setStackInSlot(int slot, @Nonnull ItemStack stack) {

@@ -1,6 +1,7 @@
 package flyingperson.regexfilters;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -22,7 +23,7 @@ public class RegexTileEntity extends TileEntity implements ITickable {
     public static final int SIZE = 9;
 
     String exp = RegexFilters.DUMMY_STRING;
-    private final RegexItemStackHandler itemStackHandler = new RegexItemStackHandler(SIZE, this);
+    public final RegexItemStackHandler itemStackHandler = new RegexItemStackHandler(SIZE, this);
     private boolean shouldUpdate = false;
     private NBTTagCompound updateTag;
     int counter;
@@ -123,4 +124,11 @@ public class RegexTileEntity extends TileEntity implements ITickable {
     public net.minecraft.util.math.AxisAlignedBB getRenderBoundingBox() {
         return INFINITE_EXTENT_AABB;
     }
+
+    @Override
+    public void markDirty() {
+        super.markDirty();
+        if (!this.world.isRemote) this.world.notifyBlockUpdate(this.pos, this.world.getBlockState(this.pos), this.world.getBlockState(this.pos), 3);
+    }
+
 }
