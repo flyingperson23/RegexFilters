@@ -21,7 +21,7 @@ public class RegexFilters
 
     public static final String DUMMY_STRING = "DUMMY_!@#$%^&*()&ydvjr4OHEb6oKCuFJp1AD9xBCsInI7umBM60njy8Wq8tjhWsnb5ebeP0ljrM1p3Wk0mqtQ6Vhg0FyxE7GXZiwGtk4WivBoUGNpj2";
 
-    @SidedProxy(clientSide = "flyingperson.regexfilters.ClientProxy")
+    @SidedProxy(clientSide = "flyingperson.regexfilters.ClientProxy", serverSide = "flyingperson.regexfilters.ServerProxy")
     public static CommonProxy proxy;
 
     @Mod.Instance
